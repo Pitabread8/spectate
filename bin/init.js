@@ -50,6 +50,18 @@ module.exports = async function () {
     }
   }
 
+  // Check if this is a piece for The Eye, and set NAV flags accordingly.
+  console.log();
+  const eyeAnswer = await asker.question({
+    message: 'Is this a piece for The Eye?',
+    options: '(n/y)',
+    validate: () => ({ success: true }),
+  });
+  const isEyePiece = eyeAnswer === 'y';
+  await setPackageKey('USE_EYE_NAV', isEyePiece, true);
+  await setPackageKey('USE_NEWS_NAV', !isEyePiece, true);
+//   log.success(`Set USE_EYE_NAV to ${isEyePiece} and USE_NEWS_NAV to ${!isEyePiece} in the "spectate" key in package.json.`);
+
   console.log(path.join(currentDir,'.posthtmlrc'));
 
   if (fs.existsSync(path.join(currentDir, '.posthtmlrc'))){
