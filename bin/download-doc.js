@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { authorizeClient } = require('./authorize-docs');
 const { docToArchieML } = require('./doc-to-archieml');
-const { log } = require('./utils');
+const { log, setPackageKey } = require('./utils');
 
 // Default PostHTML config
 const PH_CONFIG = {
@@ -52,6 +52,15 @@ module.exports = async function () {
         }
       }),
     );
+
+    // Keep USE_COVER_HED in sync with whether the doc has a cover asset, since
+    // header-cover.html requires cover_asset to render.
+    const useCoverHed = Boolean(data.cover_asset);
+    if (config.USE_COVER_HED !== useCoverHed) {
+      config.USE_COVER_HED = useCoverHed;
+      await setPackageKey('USE_COVER_HED', useCoverHed, true);
+      log.info(`Set USE_COVER_HED to ${useCoverHed}.`);
+    }
   }
 
   // Set locals for PostHTML expressions. Some default locals should always exist
