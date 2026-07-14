@@ -1,15 +1,17 @@
 /* Declaring variables */
 
-$georgia: Georgia, serif;
-$graphik: Graphik, helvetica, arial, sans-serif;
+:root {
+  --georgia: Georgia, serif;
+  --graphik: Graphik, helvetica, arial, sans-serif;
 
-$gbody-width: 600px;
-$gbody-padding: 20px;
+  --gbody-width: 600px;
+  --gbody-padding: 20px;
 
-$navbar-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.27);
-$navbar-height: 48px;
+  --navbar-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.27);
+  --navbar-height: 48px;
 
-$fade-transition-duration: 0.25s;
+  --fade-transition-duration: 0.25s;
+}
 
 /* Load fonts */
 
@@ -130,9 +132,9 @@ b {
 
 .cover-caption {
   font-size: 15px;
-  font-family: $georgia;
+  font-family: var(--georgia);
   color: #888;
-  padding: 0 $gbody-padding / 2;
+  padding: 0 calc(var(--gbody-padding) / 2);
   line-height: 1.3;
   max-width: 1300px;
   margin: 7px auto 60px;
@@ -151,7 +153,7 @@ header {
 
   p {
     margin: 0;
-    font-family: $graphik;
+    font-family: var(--graphik);
     font-size: 16px;
     line-height: 1.6;
     font-weight: 400;
@@ -159,8 +161,8 @@ header {
 
   .headline {
     margin: 0;
-    // margin-top: 50px; (only for non COVER HED pages)
-    // margin-top: 10px;
+    /* margin-top: 50px; (only for non COVER HED pages) */
+    /* margin-top: 10px; */
     font-size: 56px;
     line-height: 1;
     font-weight: bold;
@@ -171,7 +173,7 @@ header {
   }
 
   .deck {
-    font-family: $graphik;
+    font-family: var(--graphik);
     font-size: 20px;
     line-height: 1.45;
     margin-bottom: 14px;
@@ -187,7 +189,7 @@ header {
   }
 
   .pub-date {
-    // margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
 
   .inline-credits {
@@ -211,7 +213,7 @@ header {
 
   span {
     font-weight: 600;
-    font-family: $graphik;
+    font-family: var(--graphik);
     font-size: 16px;
     line-height: 1.7;
     text-align: center;
@@ -247,8 +249,8 @@ header {
 }
 
 .g-body {
-  max-width: $gbody-width;
-  width: calc(100% - #{2 * $gbody-padding});
+  max-width: var(--gbody-width);
+  width: calc(100% - (var(--gbody-padding) * 2));
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
@@ -258,7 +260,7 @@ header {
   margin-bottom: 30px;
 
   p {
-    font-family: $graphik;
+    font-family: var(--graphik);
     font-size: 16px;
     font-weight: 600;
     margin: 0;
@@ -273,12 +275,12 @@ header {
 #navbar {
   display: flex;
   width: 100%;
-  height: $navbar-height;
+  height: var(--navbar-height);
   position: fixed;
   background-color: #ffffff;
   z-index: 1000;
   transition-duration: .2s;
-  box-shadow: $navbar-shadow;
+  box-shadow: var(--navbar-shadow);
 }
 
 #navbar.only-logo {
@@ -290,7 +292,7 @@ header {
     box-sizing: border-box;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
-    transition: border $fade-transition-duration;
+    transition: border var(--fade-transition-duration);
 
     &.nav-link-highlighted, &:hover {
       border-bottom: 3px solid #fff;
@@ -312,14 +314,14 @@ header {
 
   #cds-logo-desktop-container {
     opacity: 0;
-    transition-duration: $fade-transition-duration;
+    transition-duration: var(--fade-transition-duration);
   }
 }
 
 .logo-container {
   display: flex;
   justify-content: space-between;
-  height: $navbar-height;
+  height: var(--navbar-height);
   z-index: 1;
 
   a {
@@ -343,7 +345,7 @@ header {
   padding: 0;
   margin-right: 20px;
   display: none;
-  // transition-duration: $fade-transition-duration;
+  /* transition-duration: $fade-transition-duration; */
   background: none;
 }
 
@@ -371,7 +373,7 @@ header {
   flex: 1 1;
   display: flex;
   align-items: center;
-  transition-duration: $fade-transition-duration;
+  transition-duration: var(--fade-transition-duration);
 
   div.nav-link {
     margin: 0 0 0 42px;
@@ -379,7 +381,7 @@ header {
     box-sizing: border-box;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
-    transition: border $fade-transition-duration;
+    transition: border var(--fade-transition-duration);
 
     &.nav-link-highlighted {
       border-bottom: 3px solid #121212;
@@ -392,7 +394,7 @@ header {
 
   a {
     margin: 0;
-    font-family: $graphik;
+    font-family: var(--graphik);
     font-size: 14px;
     color: #121212;
     text-decoration: none;
@@ -406,7 +408,7 @@ header {
   }
 }
 
-// Collapse navbar
+/* Collapse navbar */
 @media (max-width: 760px) {
   #navbar {
     flex-direction: column;
@@ -439,8 +441,8 @@ header {
       visibility: visible;
       opacity: 1;
       box-shadow:
-        0 -10px white, // White shadow to mask top box-shadow
-        $navbar-shadow;
+        0 -10px white, /* White shadow to mask top box-shadow */
+        var(--navbar-shadow);
       background-color: #fff;
       flex: 1 0 auto;
 
@@ -463,7 +465,7 @@ header {
   .logo-container a {
     visibility: visible;
     margin-left: 20px;
-    height: $navbar-height;
+    height: var(--navbar-height);
 
     img#cds-logo {
       width: 147px;
@@ -497,14 +499,14 @@ header {
 
 .paragraph {
   margin-bottom: 20px;
-  font-family: $georgia;
+  font-family: var(--georgia);
   font-size: 19px;
   line-height: 1.63;
 }
 
 .subhed {
   margin: 40px auto 20px;
-  font-family: $georgia;
+  font-family: var(--georgia);
   font-size: 23px;
   text-align: center;
   line-height: 1.63;
@@ -552,10 +554,10 @@ header {
 
 .image-caption-text {
   font-size: 15px;
-  font-family: $georgia;
+  font-family: var(--georgia);
   color: #666;
   margin: 7px 0 0 0;
-  padding: 0 $gbody-padding / 2;
+  padding: 0 calc(var(--gbody-padding) / 2);
   line-height: 1.3;
 
   .image-credit {
@@ -567,9 +569,9 @@ header {
   margin-top: 7px;
   margin-bottom: 0;
   font-size: 15px;
-  font-family: $georgia;
+  font-family: var(--georgia);
   box-sizing: border-box;
-  padding: 0 $gbody-padding / 2;
+  padding: 0 calc(var(--gbody-padding) / 2);
   color: #888;
   line-height: 1.3;
 }
@@ -587,7 +589,7 @@ header {
 
 .width-full-width {
   max-width: 1300px;
-  padding: 0 $gbody-padding * 1.5;
+  padding: 0 calc(var(--gbody-padding) * 1.5);
 }
 
 .width-full-bleed {
@@ -604,10 +606,10 @@ header {
   max-width: 600px;
 }
 
-// full-width image --> full-bleed image
+/* full-width image --> full-bleed image */
 @media (max-width: 767px) {
   .image {
-    padding: 0 $gbody-padding;
+    padding: 0 var(--gbody-padding);
   }
 }
 
@@ -634,7 +636,7 @@ header {
   margin-bottom: 60px;
 
   p {
-    font-family: $graphik;
+    font-family: var(--graphik);
     color: rgba(0, 0, 0, 0.7);
     line-height: 22px;
     font-size: 15px;

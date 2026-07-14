@@ -94,7 +94,7 @@ export default function () {
 
 /**
  * Disable stylesheets on contributor page. Stylesheets are included in the
- * server-side render and styles in files like news-ellipsis.scss
+ * server-side render and styles in files like news-ellipsis.css
  * still override the site.
  */
 
