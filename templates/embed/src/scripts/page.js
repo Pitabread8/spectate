@@ -11,63 +11,6 @@ function init() {
   }
 }
 
-/**
- * Do article hoisting: eeplace the section#main node with the article content.
- * Explanation at https://github.com/graphicsdesk/spectate/wiki/API-Documentation#article-hoisting
- */
-
-/* These are selectors for important elements */
-
-// SECTION_MAIN_SELECTOR is the node on the page we want to replace
-const SECTION_MAIN_SELECTOR = 'div#fusion-app';
-
-// ARTICLE_SELECTOR is where Arc Publishing puts the actual article content
-const ARTICLE_SELECTOR = 'div#fusion-app > div > div';
-
-// function hoistArticle() {
-//   // Store nodes of interest
-//   const sectionMain = document.querySelector(SECTION_MAIN_SELECTOR);
-//   const article = document.querySelector(ARTICLE_SELECTOR);
-//   sectionMain.parentNode.replaceChild(article, sectionMain);
-
-//   // Arc server-side-renders elements like links and meta tags in Spectate's index.html <head>
-//   // into a paragraph, which takes up unwanted space thanks to Arc's CSS. Let's remove it.
-//   const suspectParagraph = article.firstElementChild;
-//   if (
-//     [...suspectParagraph.children].some(el =>
-//       ['META', 'LINK'].includes(el.tagName),
-//     )
-//   ) {
-//     suspectParagraph.style.margin = 0;
-//   }
-
-//   init();
-// }
-
-// // Runs hoistArticle() and stops RAF when necessary elements exist.
-// // Stops after 3 seconds of trying.
-// const TRY_TIME = 3000;
-// let start = null;
-// function prepareHoist(timestamp) {
-//   if (document.body) {
-//     if (document.querySelector(SECTION_MAIN_SELECTOR)) hoistArticle();
-//     else init();
-//     return;
-//   }
-//   if (timestamp - (start || (start = timestamp)) < TRY_TIME) {
-//     // If the body element isn't found, run ready() again at the next frame
-//     window.requestAnimationFrame(prepareHoist);
-//   } else {
-//     // After 5 seconds, stop requesting frames and just use window.onload
-//     console.log(
-//       'Gave up replacing %s with article after %dms. Using window.onload.',
-//       SECTION_MAIN_SELECTOR,
-//       TRY_TIME,
-//     );
-//     window.onload = hoistArticle;
-//   }
-// }
-
 const isOnSpectatorPage = window.location.host === 'www.columbiaspectator.com';
 const isOnContributorPage =
   window.location.pathname.indexOf('/contributors') === 0;
@@ -83,9 +26,7 @@ export default function () {
     import('intersection-observer').then();
   }
 
-  // Replace main page section with this project if we are on a Spectator story
-  // page and the project is not an embed
-    init();
+  init();
 }
 
 /**
