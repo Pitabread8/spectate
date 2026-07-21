@@ -58,11 +58,11 @@ html {
   margin: 0;
   width: 100%;
   padding: 0;
+}
 
-  .pb-f-global-footer .footer {
-    /* Just for styling */
-    margin: 0;
-  }
+.bottom-footer .pb-f-global-footer .footer {
+  /* Just for styling */
+  margin: 0;
 }
 
 /* Overflows the page */
