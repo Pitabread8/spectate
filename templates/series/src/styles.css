@@ -1,7 +1,7 @@
-@import "styles/spectate.css";
+@import "./styles/spectate.css";
 
 /* Uncomment the following line before publishing a News story */
-/* @import "styles/news-ellipsis.css"; */
+/* @import "./styles/news-ellipsis.css"; */
 
 #body-page-container.body-page-0{
     .cover-hed header {
