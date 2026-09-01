@@ -98,11 +98,11 @@ To add a graphic to your story (i.e. custom HTML), read [this](https://github.co
 
 To add a scrollytelling interactive, read [this](https://github.com/graphicsdesk/spectate/wiki/Scrollytelling).
 
-The primary file for [SCSS](https://sass-lang.com/) goes into `src/styles.scss` (SCSS is just CSS with better features, like nested selectors and variables). `style.scss` can reference/import other styling files from the `src/styles/` directory. It's highly recommended that you make a separate styling file for each major chunk of your project. (For instance, if your story has two big graphics that don't have much to do with each other, your code is more organized/navigable if the styling for those graphics are in separate files.) If you have a stylesheet `src/styles/scatter-plot.scss`, you can import it in `src/styles.scss` with the line `@import styles/scatter-plot`.
+The primary file for CSS goes into `src/styles.css`. `styles.css` can reference/import other styling files from the `src/styles/` directory. It's highly recommended that you make a separate styling file for each major chunk of your project. (For instance, if your story has two big graphics that don't have much to do with each other, your code is more organized/navigable if the styling for those graphics are in separate files.) If you have a stylesheet `src/styles/scatter-plot.css`, you can import it in `src/styles.css` with the line `@import "styles/scatter-plot.css";`. Nested selectors work natively (no preprocessor needed) — `.parent { .child { ... } }` compiles the same way Sass nesting used to, in any modern browser.
 
 The primary file for JavaScript is `src/script.js`. Again, it's recommended that you make separate files for each major feature of your project, and that you organize all these files in the `src/scripts/` folder. Don't forget to import it in the main `script.js` file by adding `import './scripts/file-name.js` somewhere at the top of `script.js`. If you're using D3, rather than loading all of D3 as a script or package, opt to install the different libraries of d3 individually. For instance, if you only need `select`, install just the `d3-selection` library. This makes JavaScript builds much smaller.
 
-A well-organized project will minimally modify `src/index.html`, `src/styles.scss`, and `src/script.js`. Instead, those files should import/reference small, feature-bounded components.
+A well-organized project will minimally modify `src/index.html`, `src/styles.css`, and `src/script.js`. Instead, those files should import/reference small, feature-bounded components.
 
 Here are some other resources:
 * [Import data to use in JavaScript](https://github.com/graphicsdesk/spectate/wiki/Importing-data))
@@ -128,7 +128,7 @@ That means GitHub is starting up the page, but it's not ready yet. Keep refreshi
 
 ## Publishing on Arc
 
-1. Run `spectate prepublish`, which will help you set up the S3 URL. Make sure you have completed the [AWS setup](https://github.com/graphicsdesk/spectate/wiki/API-Documentation#aws-setup). Uncomment the appropriate override stylesheet at the top of `src/styles.scss`.
+1. Run `spectate prepublish`, which will help you set up the S3 URL. Make sure you have completed the [AWS setup](https://github.com/graphicsdesk/spectate/wiki/API-Documentation#aws-setup). Uncomment the appropriate override stylesheet at the top of `src/styles.css`.
 
 2. Run `spectate publish`. (Whenever you want to update JS or CSS assets after publication, just run this command again.)
 

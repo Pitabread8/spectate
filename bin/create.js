@@ -27,13 +27,18 @@ module.exports = async function () {
 
   // Copy selected templates to current directory
   await fs.remove(`${currentDir}/src`);
-  if (template == "embed")
-    await fs.copy(path.join(__dirname, '../templates/embed'), currentDir);
-  else
+  if (template == "embed") {
+    // dereference: embed's template contains symlinks into templates/default
+    // for files shared between the two templates
+    await fs.copy(path.join(__dirname, '../templates/embed'), currentDir, {
+      dereference: true,
+    });
+  } else {
     await fs.copy(path.join(__dirname, '../templates/default'), currentDir);
     if (template != "default")
       await fs.copy(path.join(__dirname, `../templates/${template}`), currentDir);
-    
+  }
+
   // Write Spectate's version number into README
   await writeReadmeVersion();
 
@@ -86,7 +91,7 @@ module.exports = async function () {
   console.log('Please check the Spectate README for further instructions.');
 
   if(template == "embed")
-    console.log(`Learn more about using Spectate embeds at this link: https://docs.google.com/document/d/1-X2lGdHIw3f4W4Lgxs0avtcZBoNwTsyobh-e94lhYUQ/edit?usp=sharing`);    
+    console.log(`Learn more about using Spectate embeds at this link: https://docs.google.com/document/d/1-X2lGdHIw3f4W4Lgxs0avtcZBoNwTsyobh-e94lhYUQ/edit?usp=sharing`);
   // At the very end, close the asker
   asker.close();
 };
