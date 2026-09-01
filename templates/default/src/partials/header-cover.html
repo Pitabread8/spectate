@@ -8,10 +8,9 @@
       <p id="dek">{{ dek }}</p>
     </if>
     <p class="byline">{{{ byline }}}</p>
-    
-    <!-- To add more bylines, add this here & on google doc
-      <p class="byline">{{{ byline2 }}}</p> 
-    -->
+    <if condition="typeof byline2 !== 'undefined' && byline2">
+      <p class="byline">{{{ byline2 }}}</p>
+    </if>
     <p class="pub-date">{{ date }}</p>
   </header>
 </div>
