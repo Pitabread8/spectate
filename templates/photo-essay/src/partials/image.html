@@ -2,13 +2,13 @@
     <div class="image vertical width-{{ item.value.width }}">
         <img src="{{ item.value.asset }}" />
         <div class="text-container">
-            <div class="image-caption-container">
-                <p class="image-caption-text">
-                    <if condition="item.value.caption">
+            <if condition="item.value.caption">
+                <div class="image-caption-container">
+                    <p class="image-caption-text">
                         {{{ item.value.caption }}}
-                    </if>
-                </p>
-            </div>
+                    </p>
+                </div>
+            </if>
             <p class="image-credit">
                 <if condition="item.value.credit">
                     Photo by {{ item.value.credit}}
@@ -21,13 +21,13 @@
     <div class="image width-{{ item.value.width }}">
         <img src="{{ item.value.asset }}" />
         <div class="text-container">
-            <div class="image-caption-container">
-                <p class="image-caption-text">
-                    <if condition="item.value.caption">
+            <if condition="item.value.caption">
+                <div class="image-caption-container">
+                    <p class="image-caption-text">
                         {{{ item.value.caption }}}
-                    </if>
-                </p>
-            </div>
+                    </p>
+                </div>
+            </if>
             <p class="image-credit">
                 <if condition="item.value.credit">
                     Photo by {{ item.value.credit}}
